@@ -1,0 +1,60 @@
+x<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars News</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mars News</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Press for Latest Mars News!!</a></p>
+    </div>
+
+    <!-- Craigslist Listings -->
+    <div class="row" id="dictionary-mars">
+      <div class="col-md-12">
+        <h4 class="heading">{{mars.news_title}}</h4>
+        <small>{{mars.news_p}}</small>
+      </div>
+    </div>
+  <hr>
+    <div class="row" id="dictionary-mars">
+      <div class="col-md-8">
+        <h3 >Featured Mars Image of the day</h3>
+      </br>
+        <img class="img responsive" src="{{mars.feature_url}}" alt="Featured Mars Image" width="512 px" height="360 px">
+      </div>
+      <div class="col-md-3 table-responsive">
+        <h3 >Mars Fact Table</h3>
+        {{ mars.table_string| safe }}
+        <hr>
+      </div>
+    </div>
+    <div class="row">       
+      {% for hemisphere in mars.hemisphere_img_url %} 
+        <div class="col-md-6">
+        </br>
+              <div>
+                <img width="512 px" height="512 px" src="{{ hemisphere.img_url | safe }}">
+              </div>
+
+              <div>
+                <h4> {{ hemisphere.title | safe }} </h4>  
+              </div>
+      
+        </div>
+      {% endfor %}
+    </div> 
+
+
+  </div>
+</body>
+
+</html>
+
