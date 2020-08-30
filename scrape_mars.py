@@ -18,7 +18,7 @@ def scrape():
 
     html = browser.html
     news_soup = bs(html, "html.parser")
-    results = news_soup.find('div', class_='list_text')
+    results = news_soup.select_one('ul.item_list')
 
 
     news_title=results.find('div', class_='content_title').text
